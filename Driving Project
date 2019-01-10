@@ -1,1 +1,21 @@
+import pandas as pd
+import numpy as np
+from sklearn.cluster import KMeans
+import matplotlib.pyplot as plt
 
+
+data = pd.read_csv('data_1024.csv')
+data.head()
+
+#dist_feat = data['Distance_Feature']
+#speed_feat= data['Speeding_Feature']
+features = data.drop('Driver_ID', axis = 1)
+
+#print(dist_feat)
+#print(speed_feat)
+#print(features)
+X=np.array(features)
+
+kmeans = KMeans(n_clusters=2, random_state=0).fit(X)
+print(kmeans.labels_)
+print(kmeans.cluster_centers_)
